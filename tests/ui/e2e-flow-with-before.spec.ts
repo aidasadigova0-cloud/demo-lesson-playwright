@@ -10,22 +10,13 @@ test.beforeEach(async ({ page }) => {
   await loginPage.open()
 })
 
-test('signIn button disabled when incorrect data inserted', async ({}) => {
+test('signIn button disabled when incorrect data inserted', async ({ page }) => {
   await loginPage.usernameField.fill(faker.lorem.word(2))
   await loginPage.passwordField.fill(faker.lorem.word(7))
   await expect(loginPage.signInButton).toBeDisabled()
 })
 
-test('error message displayed when incorrect credentials used', async ({}) => {
-  // implement test
-})
-
-test('login with correct credentials and verify order creation page', async ({}) => {
+test('login with correct credentials and verify order creation page', async ({ page }) => {
   const orderCreationPage = await loginPage.signIn(USERNAME, PASSWORD)
   await expect(orderCreationPage.statusButton).toBeVisible()
-  // verify at least few elements on the order creation page
-})
-
-test('login and create order', async ({}) => {
-  // implement test
 })
